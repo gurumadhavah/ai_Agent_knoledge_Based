@@ -87,11 +87,43 @@ streamlit run app.py
 └── requirements.txt       # Python dependencies
 ```
 
+## 🔧 Tech Stack
+
+* **Frontend:** Streamlit
+* **Framework:** LangChain
+* **LLM:** Google Gemini 1.5 Flash / Gemini 2.5 Flash
+* **Embeddings:** Google Generative AI Embeddings
+* **Vector Store:** FAISS (Facebook AI Similarity Search)
+* **Document Processing:** PyPDF, RecursiveCharacterTextSplitter
+* **API:** Google Cloud AI Platform
+
+## ⚠️ Limitations
+
+* **PDF Only:** Currently supports only PDF documents (no Word, Excel, or other formats)
+* **Local Storage:** Vector store is saved locally; not suitable for distributed deployments without modifications
+* **Context Window:** Limited by the LLM's context window size
+* **No OCR:** Cannot extract text from scanned/image-based PDFs
+* **Single Language:** Best performance with English documents
+* **Session-Based Chat:** Chat history is cleared when the app restarts
+
 ## ❗ Troubleshooting
 
 * **KeyError/AttributeError regarding session_state:** This usually happens if the session state isn't initialized correctly. Ensure you are using the latest code where initialization is outside `@st.cache_resource`.
 * **"GoogleGenerativeAIEmbeddings not found":** Ensure you installed `langchain-google-genai`.
 * **Empty Response:** If the bot says "I don't know," the answer likely isn't in your PDFs. Try increasing the `chunk_size` in `rag_pipeline.py`.
+
+## 🚀 Potential Improvements
+
+* **Multi-Format Support:** Add support for Word documents, Excel files, and text files
+* **OCR Integration:** Implement OCR capabilities for scanned PDFs using tools like Tesseract
+* **Advanced Chunking:** Experiment with semantic chunking strategies for better context preservation
+* **Persistent Chat History:** Store conversation history in a database for continuity across sessions
+* **Multi-Language Support:** Add language detection and support for non-English documents
+* **Cloud Deployment:** Implement cloud-based vector storage (e.g., Pinecone, Weaviate) for scalability
+* **User Authentication:** Add user management and authentication for multi-user scenarios
+* **Enhanced UI:** Implement document preview, highlighting of relevant passages, and confidence scores
+* **Hybrid Search:** Combine vector search with keyword-based search for improved retrieval
+* **Fine-tuning:** Fine-tune embeddings on domain-specific data for specialized knowledge bases
 
 ## 👤 Author
 
